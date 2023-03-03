@@ -15,9 +15,9 @@ export default Item
 
 const styles = StyleSheet.create({
     listItem: {
-        width: '100%',
+        width: 300,
         backgroundColor: '#ead7c3',
-        margin: 10,
+        margin: 4,
         padding: 10,
         borderRadius: 10,
     },

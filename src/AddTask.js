@@ -1,5 +1,5 @@
 import { StyleSheet, View, TextInput} from 'react-native'
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import Button from './Button'
 
 const AddTask = ({addTask}) => {
@@ -12,12 +12,12 @@ const AddTask = ({addTask}) => {
     return (
         <View style={styles.container}>
         <TextInput style={styles.inputContainer} 
-        placeholder='Añadi una nueva tarea'
+        placeholder='Añadir una nueva tarea'
         styles={styles.input}
         onChangeText={onChangeText}
         value={itemText}
         />
-        <Button title='Agregar' onPress={()=>{addTask(itemText)}}/>
+        <Button title='+' onPress={()=>{addTask(itemText)}}/>
         </View>
     )
 }
@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
         borderBottomColor: 'black',
         padding: 5,
         marginRight:5,
+        fontWeight: 'bold',
     },
 
     input: {

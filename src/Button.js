@@ -14,4 +14,19 @@ const Button = ({onPress,title}) => {
 
 export default Button
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    button: {
+        width: 50,
+        height: 50,
+        backgroundColor: '#cbdfbd',
+        padding: 0,
+        borderRadius: 50,
+        margin: 10,
+    },
+    text: {
+        color: '#000',
+        fontSize: 30,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+})

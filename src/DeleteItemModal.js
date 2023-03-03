@@ -42,13 +42,13 @@ const styles = StyleSheet.create({
     },
     
     modalTitle: {  
-        height: 50,
+        width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
     },
 
     modalContent: {
-        height: 50,
+        height: 100,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#dce0d9',
