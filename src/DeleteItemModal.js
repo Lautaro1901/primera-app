@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View, Modal, Button} from 'react-native'
 import React from 'react'
 
-const DeleteItemModal = ({modalVisible, selectItem, deleteTask, setModalVisible, setSelectedItem}) => {
+const DeleteItemModal = ({modalVisible, selectedItem, deleteTask, cancel}) => {
+
     return (
         <Modal
         animationType="slide"
@@ -16,19 +17,14 @@ const DeleteItemModal = ({modalVisible, selectItem, deleteTask, setModalVisible,
                     }}>Eliminar Item</Text>
                 </View>
                 <View style={styles.modalContent}>
-                    <Text>¿Está seguro que desea eliminar el item {selectItem?.value}?</Text>
+                    <Text>¿Está seguro que desea eliminar el item {selectedItem?.value}?</Text>
                 </View>
                 <View style={styles.modalActions}>
                     <Button style={styles.modalButton} title='Eliminar' onPress={()=>{
-                    console.log(selectItem)
-                    deleteTask(selectItem.id)                
-                    setModalVisible(false)
+                    deleteTask(selectedItem.id)  
                     }}/>
 
-                    <Button style={styles.modalButton} title='Cancelar' onPress={() => {
-                    setModalVisible(false)
-                    setSelectedItem(null);
-                    }} />
+                    <Button style={styles.modalButton} title='Cancelar' onPress={cancel} />
                 </View>
             </View>
         </Modal>
@@ -42,7 +38,7 @@ const styles = StyleSheet.create({
         width: '100%',
         bottom: 0,
         position: 'absolute',
-        backgroundColor: '#fbf6ef',
+        backgroundColor: '#dce0d9',
     },
     
     modalTitle: {  
@@ -55,7 +51,7 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fbf6ef',
+        backgroundColor: '#dce0d9',
         margin: 10,
     },
     

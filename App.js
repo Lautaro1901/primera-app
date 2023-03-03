@@ -6,16 +6,10 @@ import ItemList from './src/ItemList/ItemList';
 
 export default function App() {
 
-  const [itemText, setItemText] = useState('');
   const [item, setItem] = useState([]);
 
-    const onChangeText = (text) => {
-      setItemText(text);
-    }
-
-  const addTask = () => {
-    setItem (oldArry => [...oldArry, {id: Date.now(), value: itemText}]);
-    setItemText('');
+  const addTask = (text) => {
+    setItem (oldArry => [...oldArry, {id: Date.now(), value: text}]);
   }
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -24,26 +18,33 @@ export default function App() {
   const deleteTask = (id) => {
     setItem (oldArry => oldArry.filter((item) => item.id !== id));
     setModalVisible(false);
-    selectItem(null);
+    setSelectedItem(null);
   }
   
-  const selectItem = (item) => {
+  const openModal  = (item) => {
     setSelectedItem(item);
     setModalVisible(true);
   }
 
+  const cancel = () => {
+    setModalVisible(false);
+    setSelectedItem(null);
+  }
+
   return (
     <View style={styles.screen}>
-      <AddTask onChangeText={onChangeText} addTask={addTask}/>
-      <DeleteItemModal setModalVisible={setModalVisible} setSelectedItem={setSelectedItem} selectedItem={selectedItem} deleteTask={deleteTask} modalVisible={modalVisible}/>
-      <ItemList item={item}/>
+      <AddTask addTask={addTask}/>
+      <DeleteItemModal selectedItem={selectedItem} deleteTask={deleteTask} modalVisible={modalVisible} cancel={cancel}/>
+      <ItemList item={item} openModal={openModal}/>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   screen: {
-    padding: 40
+    padding: 40,
+    height: '100%',
+    backgroundColor: '#fbf6ef',
   },
 });
 

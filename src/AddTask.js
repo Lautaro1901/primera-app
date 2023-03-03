@@ -1,8 +1,14 @@
 import { StyleSheet, View, TextInput} from 'react-native'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Button from './Button'
 
-const AddTask = ({onChangeText, itemText}) => {
+const AddTask = ({addTask}) => {
+    
+    const [itemText, setItemText] = useState('');
+    const onChangeText = (text) => {
+        setItemText(text);
+    }
+
     return (
         <View style={styles.container}>
         <TextInput style={styles.inputContainer} 
@@ -11,6 +17,7 @@ const AddTask = ({onChangeText, itemText}) => {
         onChangeText={onChangeText}
         value={itemText}
         />
+        <Button title='Agregar' onPress={()=>{addTask(itemText)}}/>
         </View>
     )
 }

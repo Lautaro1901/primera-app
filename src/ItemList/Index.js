@@ -1,10 +1,10 @@
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet, Text, Pressable } from 'react-native'
 import React from 'react'
 
-const Item = ({itemData}) => {
+const Item = ({itemData, openModal}) => {
     return (
         <Pressable style={styles.listItem} onPress={()=>{
-            selectItem(itemData.item);
+            openModal(itemData.item);
             }}>
             <Text style={{margin: 10}}>{itemData.item.value}</Text>
         </Pressable>
